@@ -76,10 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let cards = document.querySelectorAll('img');
     const optionOneId = cardsChosenId[0];
     const optionTwoId = cardsChosenId[1];
-    if (cardsChosen[0] === cardsChosen[1]) {
+
+    if(optionOneId == optionTwoId) {
+      cards[optionOneId].setAttribute('src', 'images/blank.jpg');
+      cards[optionTwoId].setAttribute('src', 'images/blank.jpg');
+      alert('You have clicked the same image!');
+    } else if (cardsChosen[0] === cardsChosen[1]) {
       alert('You found a match');
       cards[optionOneId].setAttribute('src', 'images/white.jpg');
       cards[optionTwoId].setAttribute('src', 'images/white.jpg');
+      cards[optionOneId].removeEventListener('click', flipCard);
+      cards[optionTwoId].removeEventListener('click', flipCard);
       cardsWon.push(cardsChosen);
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.jpg');
